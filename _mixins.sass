@@ -1,0 +1,150 @@
+// Media Queries
+
+@mixin respond-to($media)
+  @if $media == mobile
+    @media only screen and (max-width: 767px)
+      @content
+  @else if $media == tablet
+    @media only screen and (min-width: 768px) and (max-width: 979px)
+      @content
+  @else if $media == laptop
+    @media only screen and (min-width: 980px) and (max-width: 1199px)
+      @content
+  @else if $media == desktop
+    @media only screen and (min-width: 1200px)
+      @content
+
+// LAYOUT
+
+@mixin clearfix
+  &:before, &:after
+    display: table
+    content: ""
+    line-height: 0
+  &:after
+    clear: both
+
+@mixin pull-left
+  float: left
+
+@mixin pull-right
+  float: right
+
+@mixin grid($colWidth, $gutterWidth, $columns)
+  .container
+    width: ($colWidth * $columns) + ($gutterWidth * $columns)
+    margin-left: auto
+    margin-right: auto
+    @extend .clearfix
+  
+  .columns
+    min-height: 1px // prevent collapsing columns
+    float: left
+    margin-left: $gutterWidth / 2
+    margin-right: $gutterWidth / 2
+    display: table
+    border-collapse: collapse
+  
+  @for $i from 1 to ($columns + 1)
+    .columns#{$i}
+      width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
+
+@mixin span($x)
+  @extend .columns
+  @extend .columns#{$x}
+
+
+@mixin responsive-img
+  max-width: 100%
+  height: inherit
+
+
+// CSS3 Stuff
+
+@mixin border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+
+
+// Common UI parts
+
+@mixin breadcrumb
+  ul
+    @extend .nav
+    li
+      padding-top: 10px
+      padding-bottom: 10px
+      &:before
+        content: "/"
+        margin: 0 10px
+        position: relative
+        top: 1px
+      &:first-child:before
+        content: " "
+
+@mixin nav
+  li
+    float: left
+
+@mixin btn($background-color, $color)
+  padding: 5px 10px
+  margin-top: 10px
+  margin-bottom: 10px
+  background-color: $background-color
+  color: $color
+  margin-right: 10px
+  @include border-radius(5px)
+  &:hover,
+  &:focus
+    background-color: darken($background-color,20%)
+
+@mixin tabs($font-size, $background-color, $color)
+  border-bottom: 1px solid darken($tabcolor,20%)
+  li
+    margin-bottom: -1px
+    a
+      padding: 8px 10px
+      line-height: $font-size + 4 // expecting px
+      margin-right: 5px
+      text-decoration: none
+      border: 1px solid transparent
+      color: $color
+      @include border-radius(4px 4px 0 0)
+      &:hover, &:focus
+        border-color: darken($background-color, 20%) darken($background-color, 20%) darken($background-color, 40%)
+        background-color: darken($background-color, 20%)
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus
+    color: darken($color, 20%)
+    background-color: darken($background-color, 40%)
+    border: 1px solid darken($background-color, 40%)
+    border-bottom-color: transparent
+    cursor: default
+
+
+// Font Awesome
+
+@import "font-awesome-unicodes"
+
+@mixin font-awesome($path)
+  @font-face
+    font-family: 'FontAwesome'
+    src: url('#{$path}/fontawesome-webfont.eot')
+    src: url('#{$path}/fontawesome-webfont.eot?#iefix') format("embedded-opentype"), url('#{$path}/fontawesome-webfont.woff') format("woff"), url('#{$path}/fontawesome-webfont.ttf') format("truetype")
+    font-weight: normal
+    font-style: normal
+
+
+@mixin icon($i)
+  &:before
+    font-family: 'FontAwesome'
+    display: inline-block
+    text-decoration: inherit
+    line-height: .9em
+    padding-right: 5px
+    text-decoration: none
+  @extend .#{$i}
