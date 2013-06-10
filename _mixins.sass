@@ -1,5 +1,4 @@
 // Media Queries
-
 =respond-to($media)
   @if $media == mobile
     @media only screen and (max-width: 767px)
@@ -14,8 +13,18 @@
     @media only screen and (min-width: 1200px)
       @content
 
-// LAYOUT
 
+=devel
+  %container
+    background-color: rgba(0,0,0,0.1)
+  %columns
+    outline: 1px solid #cc0000
+
+
+// LAYOUT
+=alpha
+  margin-left: 0
+  
 =omega($n: 1)
   @if $n == 1
     margin-right: 0
@@ -51,7 +60,10 @@
 
   @for $i from 1 to ($columns + 1)
     %columns#{$i}
-      width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
+      @if $colWidth > 0
+        width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
+      @else
+        width: 100%
 
 =span($x, $omega: 0)
   @extend %columns
@@ -60,16 +72,7 @@
     +omega($omega)
 
 
-// CSS3 Stuff
-
-=border-radius($radius)
-  -webkit-border-radius: $radius
-  -moz-border-radius: $radius
-  border-radius: $radius
-
-
 // UTILITY MIXINS
-
 %pull-left
   // PULL LEFT
   float: left !important
