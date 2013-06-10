@@ -31,22 +31,24 @@
   &:after
     clear: both
 
-=grid($colWidth, $gutterWidth, $columns)
-
+=grid($colWidth: 60px, $gutterWidth: 20px, $columns: 12)
 
   %container
-    width: ($colWidth * $columns) + ($gutterWidth * $columns)
+    @if $colWidth == 0
+      width: 100%
+    @else
+      width: ($colWidth * $columns) + ($gutterWidth * $columns)
     margin-left: auto
     margin-right: auto
     +clearfix
-  
+
   %columns
     min-height: 1px // prevent collapsing columns
     margin-right: $gutterWidth
     float: left
     //display: table
     border-collapse: collapse
-  
+
   @for $i from 1 to ($columns + 1)
     %columns#{$i}
       width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
@@ -69,11 +71,11 @@
 // UTILITY MIXINS
 
 %pull-left
-  /* PULL LEFT */
+  // PULL LEFT
   float: left !important
 
 %pull-right
-  /* PULL RIGHT */
+  // PULL RIGHT
   float: right !important
 
 %responsive-img
