@@ -15,12 +15,9 @@
 
 
 =devel
-  %container
-    //background-color: rgba(0,0,0,0.05)
   %columns
-    //outline: 1px dashed rgba(0,0,0,0.1)
     &:hover
-      outline: 1px dashed rgba(0,0,0,0.5)
+      outline: 1px dashed #ccc
 
 
 // LAYOUT
@@ -48,7 +45,7 @@
     @if $colWidth == 0
       width: 100%
     @else
-      width: ($colWidth * $columns) + ($gutterWidth * $columns)
+      width: ($colWidth * $columns) + ($gutterWidth * ($columns - 1))
     margin-left: auto
     margin-right: auto
     +clearfix
@@ -57,12 +54,13 @@
     min-height: 1px // prevent collapsing columns
     margin-right: $gutterWidth
     float: left
-    //display: table
+    display: table
     border-collapse: collapse
 
   @for $i from 1 to ($columns + 1)
     %columns#{$i}
       @if $colWidth > 0
+        /* columns#{$i} */
         width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
       @else
         width: 100%
@@ -172,11 +170,6 @@
     font-weight: bold
     padding: 0 5px
     margin: 0
-
-%well
-  padding: 10px
-  background-color: #e9e9e9
-  border: 1px solid #ccc
 
 $prefixes: ("-webkit-","-moz-", "-o-", "")
 @mixin selection($color, $background)
