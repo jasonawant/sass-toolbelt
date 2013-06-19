@@ -6,8 +6,14 @@
   @else if $media == tablet
     @media only screen and (min-width: 768px) and (max-width: 979px)
       @content
+  @else if $media == gte-tablet
+    @media only screen and (min-width: 768px)
+      @content  
   @else if $media == laptop
     @media only screen and (min-width: 980px) and (max-width: 1199px)
+      @content
+  @else if $media == gte-laptop
+    @media only screen and (min-width: 980px)
       @content
   @else if $media == desktop
     @media only screen and (min-width: 1200px)
@@ -43,7 +49,7 @@
 
   %container
     @if $colWidth == 0
-      width: 100%
+      width: 90%
     @else
       width: ($colWidth * $columns) + ($gutterWidth * ($columns - 1))
     margin-left: auto
