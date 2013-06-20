@@ -9,9 +9,15 @@
   @else if $media == gte-tablet
     @media only screen and (min-width: 768px)
       @content  
+  @else if $media == lte-tablet
+    @media only screen and (max-width: 979px)
+      @content  
   @else if $media == laptop
     @media only screen and (min-width: 980px) and (max-width: 1199px)
       @content
+  @else if $media == lte-laptop
+    @media only screen and (max-width: 1199px)
+      @content  
   @else if $media == gte-laptop
     @media only screen and (min-width: 980px)
       @content
