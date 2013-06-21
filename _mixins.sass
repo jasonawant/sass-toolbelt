@@ -216,16 +216,33 @@ $prefixes: ("-webkit-","-moz-", "-o-", "")
     font-weight: normal
     font-style: normal
 
+%icon
+  font-family: 'FontAwesome'
+  display: inline-block
+  text-decoration: inherit
+  line-height: .9em
+  text-decoration: none
+
+%icon-inside
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
 
 =icon($i,$pos: "before")
-  &:#{$pos}
-    font-family: 'FontAwesome'
-    display: inline-block
-    text-decoration: inherit
-    line-height: .9em
-    @if $pos == "before"
-      padding-right: 5px
-    @else
-      padding-left: 5px    
-    text-decoration: none
+  @if $pos == "before" or $pos == "after"
+    &:#{$pos}
+      @extend %icon
+      @if $pos == "before"
+        padding-right: 5px
+      @if $pos == "after"
+        padding-left: 5px    
+      @extend %#{$i}
+  @if $pos == "inside"
+    @extend %icon
     @extend %#{$i}
