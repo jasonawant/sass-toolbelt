@@ -1,0 +1,55 @@
+
+=alpha
+  margin-left: 0
+  
+=omega($n: 1)
+  @if $n == 1
+    margin-right: 0
+  @else
+    &:nth-child(#{$n})
+      margin-right: 0
+
+=clearfix
+  &:before, &:after
+    display: table
+    content: ""
+    line-height: 0
+  &:after
+    clear: both
+
+=grid($colWidth: 60px, $gutterWidth: 20px, $columns: 12)
+
+  %container
+    @if $colWidth == 0
+      width: 90%
+    @else
+      width: ($colWidth * $columns) + ($gutterWidth * ($columns - 1))
+    margin-left: auto
+    margin-right: auto
+    +clearfix
+
+  %columns
+    min-height: 1px // prevent collapsing columns
+    margin-right: $gutterWidth
+    float: left
+    display: block
+    border-collapse: collapse
+
+
+  @for $i from 1 to ($columns + 1)
+    %columns#{$i}
+      @if $colWidth > 0
+        /* columns#{$i} */
+        width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
+      @else
+        width: 100%
+
+=span($x, $omega: 0)
+  @extend %columns
+  @extend %columns#{$x}
+  @if $omega != 0
+    +omega($omega)
+
+%row
+  clear: both
+  display: inline-block
