@@ -1,0 +1,160 @@
+//Button Styles
+%btn
+  +background(linear-gradient(rgba(255,255,255,0.3),rgba(0,0,0,0.1)))
+  +border-radius(5px)
+  +box-shadow(inset 0 0 2px rgba(0,0,0,0.8))
+
+  color: rgba(0,0,0,0.9)
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5)
+  padding: 10px
+  margin-right: 5px
+  line-height: 12px
+  font-size: 12px
+  font-weight: bold
+  display: inline-block
+  &:hover
+    text-decoration: none
+    +background(linear-gradient(rgba(0,0,0,0.1),rgba(255,255,255,0.3)))
+
+
+// Node Edit Title
+%edit-title
+  label
+    display: none
+  input
+    font-size: 24px
+    padding: 10px
+
+// Form Input
+%regular-input
+  padding: 8px
+  font-size: 12px
+  line-height: 12px
+
+// Description
+.description
+  line-height: 12px
+
+//Verticle Tabs
+%vertical-tabs
+  ul
+    border-bottom: 1px solid #ccc
+    border-left: 1px solid #ccc
+    border-top: 1px solid #ccc
+    li
+      border-right: 1px solid #ccc
+      border-bottom: 1px solid #ccc
+      padding: 10px
+      background-color: #f5f5f5
+      &.selected
+        background-color: #fff
+      &.last
+        border-bottom-width: 0
+      a
+        text-decoration: none
+        color: #333
+  .vertical-tabs-panes
+    padding: 10px
+    border-top: 1px solid #ccc
+    border-right: 1px solid #ccc
+    border-bottom: 1px solid #ccc
+    border-left: 1px solid #ccc
+
+// Primary Tabs
+%primary-tabs
+  padding: 0 3px
+  margin: 10px 0
+  border-bottom: 1px solid #ccc
+  +clearfix
+  li
+    float: left
+    display: block
+    margin: 0 5px 0 0
+    position: relative
+    top: 1px
+    a
+      border-color: #bbb
+      border-style: solid solid none solid
+      border-width: 1px
+      display: block
+      padding: 5px 10px
+      margin: 0
+      color: #333
+      background-color: #e9e9e9
+      text-shadow: 0 1px 0 #fff
+      border-top-left-radius: 6px
+      border-top-right-radius: 6px
+      text-decoration: none
+    a.active
+      background-color: #fff
+      border-bottom: 1px solid #fff
+
+//Normal List Items
+%unordered-list
+  margin-left: 30px
+  margin-top: 20px
+  margin-bottom: 20px
+  li
+    list-style: none
+    font-size: 12px
+    line-height: 14px
+    margin-top: 10px
+    margin-bottom: 10px
+    // +icon("icon-play")
+    &:before
+      color: $blue
+      margin-left: -15px
+  &.two-columns
+    +column-count(2)
+    li
+      margin-left: 15px
+
+//Collapsible Fieldsets
+%fieldset-collapsible
+  border: 1px solid #ccc
+  padding: 15px
+  margin: 10px 0
+  &.collapsed
+    border-width: 1px 0 0 0
+    padding-top: 0
+    padding-bottom: 0
+
+//Tables
+%table
+  color: $black
+
+  thead, tbody
+    th, td
+      vertical-align: top
+      border: 1px solid $lightgray
+      padding: 5px
+
+
+%well
+  +border-radius(5px)
+  //border: 1px solid $lightgray
+  +box-shadow(inset 0px 3px 5px 0px rgba(02,02,02,0.12))
+  margin: 0
+  padding: 0
+  background-color: #fff
+
+
+img
+  float: inherit
+  margin: 10px 0
+
+img.image-right
+  float: right
+  margin-left: 10px
+  margin-bottom: 10px
+
+img.image-left
+  float: left
+  margin-right: 10px
+  margin-bottom: 10px
+
+img.image-centered
+  float: inherit
+  display: block
+  margin-left: auto
+  margin-right: auto

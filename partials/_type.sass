@@ -1,7 +1,10 @@
-a
-	text-decoration: none
-	&:hover
-		text-decoration: underline
+body
+	font-family: $sans
+	a
+		color: $blue
+		text-decoration: none
+		&:hover
+			text-decoration: underline
 
 h1, h2, h3, h4, h5, h6, p
 	margin: 10px 0
@@ -25,3 +28,32 @@ h6
 p, li
 	font-size: $max-text-size * 0.5
 	line-height: $max-text-size * 0.7
+
+.centered
+	text-align: center
+
+em
+	color: $gray
+
+ol
+	margin-left: 30px
+	list-style: decimal
+
+hr
+	border-top: 1px solid $lightgray
+	border-bottom: 1px solid $gray
+	border-left: none
+	border-right: none
+	clear: both
+
+label
+	font-weight: normal
+
+blockquote
+	&:before
+		float: left
+		display: block
+		font-size: 24px
+	p
+		padding: 0 30px
+		color: $black
