@@ -2,13 +2,6 @@
 =alpha
   margin-left: 0
   
-=omega($n: 1)
-  @if $n == 1
-    margin-right: 0
-  @else
-    &:nth-child(#{$n})
-      margin-right: 0
-
 =clearfix
   &:before, &:after
     display: table
@@ -49,6 +42,13 @@
   @extend %columns#{$x}
   @if $omega != 0
     +omega($omega)
+
+=omega($n: 1)
+  @if $n == 1
+    margin-right: 0 !important
+  @else
+    &:nth-child(#{$n})
+      margin-right: 0 !important
 
 %row
   clear: both

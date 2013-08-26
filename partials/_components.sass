@@ -1,11 +1,5 @@
 //Button Styles
 %btn
-  +background(linear-gradient(rgba(255,255,255,0.3),rgba(0,0,0,0.1)))
-  +border-radius(5px)
-  +box-shadow(inset 0 0 2px rgba(0,0,0,0.8))
-
-  color: rgba(0,0,0,0.9)
-  text-shadow: 0 1px 0 rgba(255,255,255,0.5)
   padding: 10px
   margin-right: 5px
   line-height: 12px
@@ -14,7 +8,25 @@
   display: inline-block
   &:hover
     text-decoration: none
+
+%btn-smooth
+  +background(linear-gradient(rgba(255,255,255,0.3),rgba(0,0,0,0.1)))
+  +border-radius(5px)
+  +box-shadow(inset 0 0 2px rgba(0,0,0,0.8))
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5)
+  color: rgba(0,0,0,0.9)
+  &:hover
     +background(linear-gradient(rgba(0,0,0,0.1),rgba(255,255,255,0.3)))
+
+%btn-square
+  background-color: $blue
+  color: $white
+  &:hover
+    background-color: darken($blue, 20%)
+
+=btn($type: smooth)
+  @extend %btn
+  @extend %btn-#{$type}
 
 
 // Node Edit Title
