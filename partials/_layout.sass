@@ -28,6 +28,9 @@
     display: block
     border-collapse: collapse
 
+  %fluidwidths
+    min-height: 1px // prevent collapsing columns
+    float: left
 
   @for $i from 1 to ($columns + 1)
     %columns#{$i}
@@ -36,6 +39,15 @@
         width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
       @else
         width: 100%
+
+    %fluidwidth#{$i}
+      @if $colWidth > 0
+        /* fluidwidth#{$i} */
+        width: (100% / $columns) * $i
+
+=fluidspan($x, $omega: 0)
+  @extend %fluidwidths
+  @extend %fluidwidth#{$x}
 
 =span($x, $omega: 0)
   @extend %columns
