@@ -1,5 +1,12 @@
+=form-control-focus($color: #66afe9)
+  &:focus
+    border-color: $color
+    outline: 0
+    +box-shadow(inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(red($color),green($color),blue($color),.6))
+    +transition(box-shadow 0.15s ease-in-out)
 
 %form-element
+  +form-control-focus()
   background-color: #fff
   border: 1px solid darken(#fff, 20%)
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1)
@@ -7,15 +14,8 @@
   margin: 0 0 16px 0
   padding: 10px
   height: 13px + (16px * 1.5)
-  width: 100%
   box-sizing: border-box
 
-  // Basic focus styles
-  &:focus 
-    background: darken(#fff, 2%)
-    border-color: darken(#fff, 40%)
-    outline: none
-  
   // Disabled background input background color
   &[disabled]
     background-color: #ddd
@@ -31,3 +31,36 @@
   &:hover
     background-color: darken($blue,10%)
     text-decoration: none
+
+%form-select
+  height: 13px + (16px * 1.5)
+  padding: 10px
+  font-size: $max-text-size * 0.4
+  line-height: $max-text-size * 0.5
+  color: $black
+  vertical-align: middle
+  background-color: $white
+  background-image: none // Reset unusual Firefox-on-Android default style see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid $lightgray
+  border-radius: 3px
+  +box-shadow(inset 0 1px 1px rgba(0,0,0,.075))
+  +transition("border-color ease-in-out .15s, box-shadow ease-in-out .15s")
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  +form-control-focus()
+
+  // Disabled and read-only inputs
+  // Note: HTML5 says that controls under a fieldset > legend:first-child won't
+  // be disabled if the fieldset is disabled. Due to implementation difficulty,
+  // we don't honor that edge case we style them as disabled anyway.
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] &
+    cursor: not-allowed
+    background-color: $lightgray
+
+  // Reset height for `textarea`s
+  textarea &
+    height: auto
+
+

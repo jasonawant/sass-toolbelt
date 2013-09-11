@@ -49,6 +49,7 @@
 
 //Verticle Tabs
 %vertical-tabs
+  @extend %nolist
   ul
     border-bottom: 1px solid #ccc
     border-left: 1px solid #ccc
@@ -124,6 +125,12 @@
     li
       margin-left: 15px
 
+//No List UL
+%nolist
+  margin: 0px
+  li
+    list-style: none
+
 //Collapsible Fieldsets
 %fieldset-collapsible
   border: 1px solid #ccc
@@ -137,7 +144,9 @@
 //Tables
 %table
   color: $black
-
+  thead
+    th
+      font-weight: bold
   thead, tbody
     th, td
       vertical-align: top
