@@ -1,13 +1,21 @@
 //Button Styles
 %btn
-  padding: 10px
   margin-right: 5px
-  line-height: 12px
-  font-size: 12px
   font-weight: bold
   display: inline-block
   &:hover
     text-decoration: none
+
+%btn-regular
+  padding: 10px
+  line-height: 12px
+  font-size: 12px
+
+%btn-small
+  padding: 5px 7px
+  line-height: 11px
+  font-size: 10px
+
 
 %btn-smooth
   +background(linear-gradient(rgba(255,255,255,0.3),rgba(0,0,0,0.1)))
@@ -27,6 +35,12 @@
 =btn($type: smooth)
   @extend %btn
   @extend %btn-#{$type}
+  @extend %btn-regular
+
+=btn-small($type: smooth)
+  @extend %btn
+  @extend %btn-#{$type}
+  @extend %btn-small
 
 
 // Node Edit Title
