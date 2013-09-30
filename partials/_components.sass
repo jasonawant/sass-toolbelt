@@ -1,4 +1,19 @@
-//Button Styles
+//
+// Button Styles
+//
+
+// Mixin for regular button. It will take a argument for type. 
+// Smooth/Square
+=btn($type: smooth)
+  @extend %btn
+  @extend %btn-#{$type}
+  @extend %btn-regular
+
+=btn-small($type: smooth)
+  @extend %btn
+  @extend %btn-#{$type}
+  @extend %btn-small
+
 %btn
   margin-right: 5px
   font-weight: bold
@@ -31,16 +46,6 @@
   color: $white
   &:hover
     background-color: darken($blue, 20%)
-
-=btn($type: smooth)
-  @extend %btn
-  @extend %btn-#{$type}
-  @extend %btn-regular
-
-=btn-small($type: smooth)
-  @extend %btn
-  @extend %btn-#{$type}
-  @extend %btn-small
 
 
 // Node Edit Title
