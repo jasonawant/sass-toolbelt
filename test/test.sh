@@ -1,0 +1,1 @@
+sass --watch --compass test.sass:test.css
