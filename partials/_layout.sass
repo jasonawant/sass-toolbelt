@@ -27,6 +27,11 @@
     float: left
     display: block
     border-collapse: collapse
+    @if $colWidth == 0
+      width: 100%
+
+  %mobile-width
+    width: 100%
 
   %fluidwidths
     min-height: 1px // prevent collapsing columns
@@ -37,8 +42,6 @@
       @if $colWidth > 0
         /* columns#{$i} */
         width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
-      @else
-        width: 100%
 
     %fluidwidth#{$i}
       @if $colWidth > 0

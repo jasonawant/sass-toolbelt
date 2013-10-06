@@ -1,4 +1,95 @@
 @import "../sass-toolbelt"
 
++devel
+
++respond-to(mobile)
+  +grid(0)
++respond-to(tablet)
+  +grid(40px,20px,12)
++respond-to(laptop)
+  +grid(60px,20px,12)
++respond-to(desktop)
+  +grid(70px,20px,12)
+
+.container
+  @extend %container
+
+.span1
+  +span(1)
+.span2
+  +span(2)
+.span3
+  +span(3)
+.span4
+  +span(4)
+.span5
+  +span(5)
+.span6
+  +span(6)
+.span7
+  +span(7)
+.span8
+  +span(8)
+.span9
+  +span(9)
+.span10
+  +span(10)
+.span11
+  +span(11)
+.span12
+  +span(12)
+
 .btn
   +btn
+
+.btn-small
+  +btn-small
+
+.btn-square
+  +btn(square)
+
+.btn-small-square
+  +btn-small(square)
+
+.title
+  @extend %edit-title
+
+.regular-input
+  @extend %regular-input
+
+.vertical-tabs
+  @extend %vertical-tabs
+
+.primary-tabs
+  @extend %primary-tabs
+
+.unordered-list
+  @extend %unordered-list
+
+.nolist
+  @extend %nolist
+
+.fieldset-collapsible
+  @extend %fieldset-collapsible
+
+.table
+  @extend %table
+
+.well
+  @extend %well
+
+.img
+  @extend %img
+
+.breadcrumb
+  @extend %breadcrumb
+
+.nav
+  @extend %nav
+
+.tabs
+  +tabs
+
+.fieldset
+  +fieldset
+

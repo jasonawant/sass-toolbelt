@@ -1,1 +1,1 @@
-sass --watch --compass test.sass:test.css
+sass --watch --compass "${PWD}/test/test.sass:${PWD}/test/test.css"

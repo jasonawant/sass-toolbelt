@@ -231,24 +231,27 @@
 
 
 
-
-=tabs($font-size, $background-color, $color)
-  border-bottom: 1px solid $background-color
+%tabs
   margin: 10px 0
   li
     margin-bottom: -1px
-    a
-      padding: 8px 10px
-      line-height: $font-size // expecting px
-      margin-right: 5px
-      text-decoration: none
-      border-bottom: 1px solid transparent
+  a
+    padding: 8px 10px
+    margin-right: 5px
+    text-decoration: none
+    border-bottom: 1px solid transparent
+    +border-radius(4px 4px 0 0)
+
+=tabs($font-size: $max-text-size * 0.4, $background-color: $background-color, $color: $text-color)
+  @extend %tabs
+  border-bottom: 1px solid $background-color
+  a
+    line-height: $font-size // expecting px
+    color: $background-color
+    &:hover, &:focus
+      border-bottom: 1px solid $background-color
+      background-color: darken($color,10%)
       color: $background-color
-      +border-radius(4px 4px 0 0)
-      &:hover, &:focus
-        border-bottom: 1px solid $background-color
-        background-color: darken($color,10%)
-        color: $background-color
 
   > .active > a,
   > .active > a:hover,
@@ -257,8 +260,7 @@
     background-color: darken($background-color, 10%)
     cursor: default
 
-=fieldset($border-color: #ccc)
-  border: solid 1px $border-color
+%fieldset
   padding: 10px
   margin: 10px 0
   legend
@@ -266,9 +268,6 @@
     padding: 0 5px
     margin: 0
 
-$prefixes: ("-webkit-","-moz-", "-o-", "")
-@mixin selection($color, $background)
-  @each $prefix in $prefixes
-    ::#{$prefix}selection
-      color: $color
-      background: $background
+=fieldset($border-color: lighten($gray,50%))
+  border: solid 1px $border-color
+  @extend %fieldset
