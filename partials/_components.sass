@@ -201,3 +201,88 @@
     display: block
     margin-left: auto
     margin-right: auto
+
+
+%breadcrumb
+  ul
+    li
+      float: left
+      &:before
+        content: "/"
+        position: relative
+        top: 1px
+      &:first-child
+        margin-left: 0
+        &:before
+          content: " "
+      a, span
+        margin-left: 5px
+        margin-right: 5px
+
+%nav
+  padding: 0
+  margin: 0
+  li
+    float: left
+    position: relative
+    display: block
+    margin: 0
+    a
+      position: relative
+      display: block
+
+
+
+=btn($background-color, $color)
+  padding: 5px 10px
+  margin-top: 10px
+  margin-bottom: 10px
+  background-color: $background-color
+  color: $color
+  margin-right: 10px
+  +border-radius(5px)
+  &:hover,
+  &:focus
+    background-color: darken($background-color,20%)
+    text-decoration: none
+
+=tabs($font-size, $background-color, $color)
+  border-bottom: 1px solid $background-color
+  margin: 10px 0
+  li
+    margin-bottom: -1px
+    a
+      padding: 8px 10px
+      line-height: $font-size // expecting px
+      margin-right: 5px
+      text-decoration: none
+      border-bottom: 1px solid transparent
+      color: $background-color
+      +border-radius(4px 4px 0 0)
+      &:hover, &:focus
+        border-bottom: 1px solid $background-color
+        background-color: darken($color,10%)
+        color: $background-color
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus
+    color: $color
+    background-color: darken($background-color, 10%)
+    cursor: default
+
+=fieldset($border-color: #ccc)
+  border: solid 1px $border-color
+  padding: 10px
+  margin: 10px 0
+  legend
+    font-weight: bold
+    padding: 0 5px
+    margin: 0
+
+$prefixes: ("-webkit-","-moz-", "-o-", "")
+@mixin selection($color, $background)
+  @each $prefix in $prefixes
+    ::#{$prefix}selection
+      color: $color
+      background: $background
