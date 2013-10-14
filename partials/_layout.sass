@@ -51,6 +51,8 @@
 =fluidspan($x, $omega: 0)
   @extend %fluidwidths
   @extend %fluidwidth#{$x}
+  @if $omega != 0
+    +omega($omega)
 
 =span($x, $omega: 0)
   @extend %columns
@@ -68,3 +70,33 @@
 %row
   clear: both
   display: inline-block
+
+%sidebar
+  display: none
+  overflow: hidden
+  +box-sizing(border-box)
+  +respond-to(gte-laptop)
+    position: fixed
+    width: 20%
+    top: 0px
+    left: 0px
+    height: 100%
+    display: block !important
+
+.mobilenavtoggle
+  +respond-to(gte-laptop)
+    display: none
+  cursor: pointer
+  position: absolute
+  right: 20px
+  padding: 20px
+  &:after
+    +icon($align-justify)
+
+
+
+%sidebar-content
+  +box-sizing(border-box)
+  width: 100%
+  +respond-to(gte-laptop)
+    padding-left: 20%
