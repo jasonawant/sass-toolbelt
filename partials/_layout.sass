@@ -36,6 +36,8 @@
   %fluidwidths
     min-height: 1px // prevent collapsing columns
     float: left
+    padding-right: $gutterWidth
+    box-sizing: border-box
 
   @for $i from 1 to ($columns + 1)
     %columns#{$i}
@@ -63,9 +65,11 @@
 =omega($n: 1)
   @if $n == 1
     margin-right: 0 !important
+    padding-right: 0 !important
   @else
     &:nth-child(#{$n})
       margin-right: 0 !important
+      padding-right: 0 !important
 
 %row
   clear: both
