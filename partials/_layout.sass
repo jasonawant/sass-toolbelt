@@ -3,7 +3,6 @@
   margin-left: 0
 
 =grid($colWidth: 60px, $gutterWidth: 20px, $columns: 12)
-
   %container
     @if $colWidth == 0
       width: 90%
@@ -41,6 +40,9 @@
       @if $colWidth > 0
         /* fluidwidth#{$i} */
         width: (100% / $columns) * $i
+
+=container
+  +e(container)
 
 =fluidspan($x, $omega: 0)
   @extend %fluidwidths
