@@ -36,6 +36,11 @@
         /* columns#{$i} */
         width: ($colWidth * $i) + ($gutterWidth * ($i - 1))
 
+    %push#{$i}
+      @if $colWidth > 0
+        /* columns#{$i} */
+        margin-left: ($colWidth * $i) + ($gutterWidth * ($i - 1))
+
     %fluidwidth#{$i}
       @if $colWidth > 0
         /* fluidwidth#{$i} */
@@ -55,6 +60,9 @@
   @extend %columns#{$x}
   @if $omega != 0
     +omega($omega)
+
+=push($x)
+  @extend %push#{$x}
 
 =omega($n: 1)
   @if $n == 1
