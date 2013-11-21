@@ -78,7 +78,8 @@
   display: inline-block
 
 %sidebar
-  display: none
+  body.no-mediaqueries &
+    display: none
   overflow: hidden
   +box-sizing(border-box)
   +respond-to(gte-laptop)
