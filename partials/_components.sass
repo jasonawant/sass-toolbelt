@@ -276,3 +276,17 @@
   width: $width
   height: $height
 
+
+%messages
+  margin: 10px 0px
+  .messages
+    padding: 10px
+    &.status
+      background-color: lighten($green,20%)
+      color: darken($green,20%)
+    &.warning
+      background-color: lighten($orange, 20%)
+      color: darken($orange,20%)
+    &.error
+      background-color: lighten($red, 20%)
+      color: darken($red,20%)
